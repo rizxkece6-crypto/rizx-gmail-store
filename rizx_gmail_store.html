@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RIZX GMAIL STORE</title>
+<style>
+:root{--bg:#081426;--panel:#10233d;--panel2:#142b49;--line:#25415f;--text:#eef5ff;--muted:#a9bdd5;--blue:#3988ff;--green:#35c98a}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#071222,#0c1d34 55%,#102b4c);color:var(--text);font:16px system-ui,Arial,sans-serif;min-height:100vh}
+.wrap{max-width:1000px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.brand{font-weight:900;letter-spacing:.7px;font-size:clamp(20px,4vw,28px)}.brand span{color:#66a8ff}
+.pill{border:1px solid #2e6b57;background:#12392f;color:#9cf0c8;border-radius:99px;padding:7px 12px;font-size:12px}
+.hero{padding:26px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(120deg,#142d4c,#10213a);margin-bottom:18px}
+h1{font-size:clamp(25px,5vw,38px);margin:0 0 8px}.muted{color:var(--muted);line-height:1.55;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0}
+.card{background:rgba(16,35,61,.96);border:1px solid var(--line);border-radius:18px;padding:19px}
+.card h2{font-size:18px;margin:0 0 13px}.stat{font-size:27px;font-weight:800;margin-top:6px}
+label{display:block;color:#c8d8eb;font-size:13px;margin:12px 0 6px}
+input,select{width:100%;padding:12px 13px;border:1px solid #355574;border-radius:11px;background:#09182b;color:var(--text);font:inherit;outline:none}
+input:focus,select:focus{border-color:var(--blue)}
+button{border:0;border-radius:11px;background:var(--blue);color:white;font-weight:750;padding:12px 16px;font:inherit;cursor:pointer;margin-top:12px}
+button.secondary{background:#213d5d;border:1px solid #426486}button:active{transform:scale(.99)}
+.result{margin-top:12px;padding:12px;border:1px dashed #4c78a5;border-radius:11px;overflow-wrap:anywhere;min-height:48px;color:#bcdcff}
+.note{font-size:12px;color:var(--muted);line-height:1.5}.rules li{margin:8px 0;color:#d2e0f0}
+footer{text-align:center;color:#829bb8;font-size:12px;padding:22px}
+#toast{color:#8de5ba;font-size:13px;min-height:20px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">RIZX <span>GMAIL STORE</span></div>
+    <div class="pill">● DEMO WEBSITE</div>
+  </header>
+
+  <section class="hero">
+    <h1>Selamat datang di RIZX Gmail Store</h1>
+    <p class="muted">Kelola alias alamat Gmail milikmu dan lihat contoh aturan penarikan saldo. Tampilan ini masih berupa demo lokal.</p>
+  </section>
+
+  <section class="grid">
+    <div class="card"><div class="muted">Saldo demo</div><div class="stat">Rp0</div><div class="note">Belum ada saldo sungguhan.</div></div>
+    <div class="card"><div class="muted">Minimal penarikan</div><div class="stat">Rp5.000</div><div class="note">Ketentuan contoh untuk versi demo.</div></div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>✉️ Generator alias Gmail</h2>
+      <p class="note">Buat variasi alamat untuk Gmail milikmu sendiri. Ini tidak membuat akun Google/Gmail baru.</p>
+      <label for="base">Username Gmail milikmu (tanpa @gmail.com)</label>
+      <input id="base" placeholder="contoh: namakamu" autocomplete="off">
+      <label for="tag">Kata tambahan / alias</label>
+      <input id="tag" placeholder="contoh: toko atau rizx" autocomplete="off">
+      <button id="make">Buat alias</button>
+      <div class="result" id="result">Alias akan muncul di sini.</div>
+      <button class="secondary" id="copy">Salin alias</button>
+      <div id="toast" aria-live="polite"></div>
+    </div>
+
+    <div class="card">
+      <h2>💸 Simulasi penarikan</h2>
+      <p class="note">Formulir ini hanya contoh tampilan. Tidak mengirim uang atau menyimpan data.</p>
+      <label for="amount">Jumlah penarikan (Rp)</label>
+      <input id="amount" type="number" min="5000" step="1000" placeholder="Minimal 5000">
+      <label for="method">Metode</label>
+      <select id="method"><option>OVO</option><option>GoPay</option><option>DANA</option><option>E-wallet lainnya</option></select>
+      <button id="withdraw">Cek pengajuan demo</button>
+      <div class="result" id="withdrawResult">Status pengajuan akan muncul di sini.</div>
+    </div>
+  </section>
+
+  <section class="card rules">
+    <h2>📌 Rules penarikan dana</h2>
+    <ul>
+      <li>Minimal penarikan adalah Rp5.000.</li>
+      <li>Pastikan metode dan nomor tujuan benar sebelum mengajukan.</li>
+      <li>Pengajuan sungguhan harus diverifikasi admin dan mengikuti ketentuan layanan pembayaran resmi.</li>
+      <li>Dilarang menggunakan saldo atau transaksi palsu.</li>
+      <li>Jangan pernah memberikan password Gmail, kode OTP, atau kode pemulihan kepada siapa pun.</li>
+    </ul>
+    <p class="note">Catatan: fitur saldo dan penarikan belum terhubung ke database, admin, atau penyedia pembayaran. Jangan masukkan nomor e-wallet asli pada demo ini.</p>
+  </section>
+
+  <footer>© 2026 RIZX GMAIL STORE • Demo website pribadi</footer>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+let currentAlias = "";
+$("make").addEventListener("click", () => {
+  const base = $("base").value.trim().toLowerCase();
+  const tag = $("tag").value.trim().toLowerCase().replace(/[^a-z0-9]/g,"");
+  if (!base || !/^[a-z0-9.]+$/.test(base) || base.includes("@")) {
+    $("result").textContent = "Masukkan username Gmail milikmu tanpa @gmail.com.";
+    currentAlias = ""; return;
+  }
+  if (!tag) {
+    $("result").textContent = "Isi kata tambahan alias terlebih dahulu.";
+    currentAlias = ""; return;
+  }
+  currentAlias = base + "+" + tag + "@gmail.com";
+  $("result").textContent = currentAlias;
+  $("toast").textContent = "";
+});
+$("copy").addEventListener("click", async () => {
+  if (!currentAlias) { $("toast").textContent = "Buat alias terlebih dahulu."; return; }
+  try { await navigator.clipboard.writeText(currentAlias); $("toast").textContent = "Alias berhasil disalin."; }
+  catch(e) { $("toast").textContent = "Salin manual alias yang tampil di atas."; }
+});
+$("withdraw").addEventListener("click", () => {
+  const amount = Number($("amount").value);
+  if (!Number.isFinite(amount) || amount < 5000) {
+    $("withdrawResult").textContent = "Jumlah minimal penarikan demo adalah Rp5.000.";
+    return;
+  }
+  $("withdrawResult").textContent = "Simulasi berhasil: Rp" + amount.toLocaleString("id-ID") + " melalui " + $("method").value + ". Tidak ada uang yang dikirim.";
+});
+</script>
+</body>
+</html>
